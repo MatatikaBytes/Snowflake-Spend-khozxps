@@ -1,0 +1,34 @@
+# This file is managed by the 'analyze-sit' file bundle and updated automatically when `meltano upgrade` is run.
+# To prevent any manual changes from being overwritten, remove the file bundle from `meltano.yml` or disable automatic updates:
+#     meltano config --plugin-type=files analyze-sit set _update analyze/datasets/tap-matatika-sit/user-ages.yml false
+
+version: datasets/v0.2
+title: User Ages
+metadata: |-
+  {
+    "name": "gitflixusers",
+    "label": "GitFlixUsers",
+    "related_table": {
+      "columns": [
+        {
+          "label": "Name",
+          "name": "name"
+        }
+      ], 
+      "aggregates": [
+        {
+          "label": "Age",
+          "name": "age"
+        }
+      ]
+    }
+  }
+visualisation: |-
+  {
+    "chartjs-chart": {
+      "chartType": "bar"
+    }
+  }
+query: |-
+  SELECT name "gitflixusers.name", age "gitflixusers.age"
+  FROM gitflixusers

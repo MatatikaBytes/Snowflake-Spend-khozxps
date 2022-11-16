@@ -1,0 +1,8 @@
+version: pipelines/v0.1
+name: Snow
+timeout: 0
+data_components:
+- dbt
+actions:
+- dbt:deps
+- dbt:run

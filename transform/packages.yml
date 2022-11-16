@@ -1,0 +1,5 @@
+packages:
+- git: https://github.com/gitlabhq/snowflake_spend
+  revision: v1.3.0
+- git: https://github.com/get-select/dbt-snowflake-monitoring
+  revision: 1.1.0

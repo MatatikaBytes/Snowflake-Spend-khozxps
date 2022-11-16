@@ -1,0 +1,24 @@
+version: 1
+default_environment: dev
+project_id: 76f19458-10d8-4bb9-bf6c-29c6493a03d5
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  loaders:
+  - name: target-postgres
+    variant: transferwise
+    pip_url: git+https://github.com/Matatika/pipelinewise-target-postgres@v0.1.0
+  - name: target-snowflake
+    variant: matatika
+    pip_url: git+https://github.com/Matatika/target-snowflake@v0.1.1
+  transformers:
+  - name: dbt
+    variant: dbt
+    pip_url: "dbt-core~=1.0.0 dbt-postgres~=1.0.0 dbt-redshift~=1.0.0 dbt-snowflake~=1.0.0\
+      \ dbt-bigquery~=1.0.0\n"
+  files:
+  - name: files-dbt
+    variant: dbt
+    pip_url: git+https://github.com/Matatika/files-dbt@v1.0.x.1

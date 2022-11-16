@@ -1,0 +1,78 @@
+{
+  "plugin_type": "loaders",
+  "name": "target-snowflake",
+  "namespace": "snowflake",
+  "variant": "matatika",
+  "label": "Snowflake",
+  "docs": "https://hub.meltano.com/loaders/snowflake--meltano.html",
+  "repo": "https://github.com/Matatika/target-snowflake",
+  "pip_url": "git+https://github.com/Matatika/target-snowflake@v0.1.1",
+  "settings": [
+    {
+      "name": "account",
+      "kind": "string",
+      "label": "Account",
+      "description": "Account Name in Snowflake (https://XXXXX.snowflakecomputing.com)",
+      "protected": false
+    },
+    {
+      "name": "username",
+      "kind": "string",
+      "label": "Username",
+      "description": "The username you use for logging in",
+      "protected": false
+    },
+    {
+      "name": "password",
+      "kind": "password",
+      "label": "Password",
+      "description": "The password you use for logging in",
+      "protected": false
+    },
+    {
+      "name": "role",
+      "kind": "string",
+      "label": "Role",
+      "description": "Role to be used for loading the data, e.g. `LOADER`. Also this role is GRANTed usage to all tables and schemas created",
+      "protected": false
+    },
+    {
+      "name": "database",
+      "kind": "string",
+      "label": "Database",
+      "description": "The name of the Snowflake database you want to use",
+      "protected": false
+    },
+    {
+      "name": "warehouse",
+      "kind": "string",
+      "label": "Warehouse",
+      "description": "The name of the Snowflake warehouse you want to use",
+      "protected": false
+    },
+    {
+      "name": "schema",
+      "kind": "string",
+      "value": "analytics",
+      "label": "Schema",
+      "protected": false,
+      "value_processor": "upcase_string"
+    },
+    {
+      "name": "batch_size",
+      "kind": "integer",
+      "value": 5000,
+      "label": "Batch Size",
+      "description": "How many records are sent to Snowflake at a time?",
+      "protected": false
+    },
+    {
+      "name": "timestamp_column",
+      "kind": "string",
+      "value": "__loaded_at",
+      "label": "Timestamp Column",
+      "description": "Name of the column used for recording the timestamp when Data are uploaded to Snowflake.",
+      "protected": false
+    }
+  ]
+}
