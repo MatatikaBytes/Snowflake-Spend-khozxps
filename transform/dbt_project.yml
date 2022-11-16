@@ -24,5 +24,13 @@ clean-targets:
 - logs
 models:
   my_meltano_project:
-  dbt-snowflake_spend: {}
+
+  # ------------------
+  # Snowflake Spend Package https://gitlab.com/gitlab-data/snowflake_spend
+  # ------------------
+  dbt-snowflake_spend:
+    +materialized: view
+
   dbt-snowflake-monitoring: {}
+  
+
