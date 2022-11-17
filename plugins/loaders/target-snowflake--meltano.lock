@@ -2,7 +2,7 @@
   "plugin_type": "loaders",
   "name": "target-snowflake",
   "namespace": "snowflake",
-  "variant": "matatika",
+  "variant": "meltano",
   "label": "Snowflake",
   "docs": "https://hub.meltano.com/loaders/snowflake--meltano.html",
   "repo": "https://github.com/Matatika/target-snowflake",
