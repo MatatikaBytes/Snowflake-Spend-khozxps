@@ -31,6 +31,10 @@ models:
   dbt-snowflake_spend:
     +materialized: view
 
-  dbt-snowflake-monitoring: {}
+  # ------------------
+  # Select dbt Snowflake monitoring https://github.com/get-select/dbt-snowflake-monitoring
+  # ------------------
+  dbt_snowflake_monitoring:
+    enabled: true
   
 
