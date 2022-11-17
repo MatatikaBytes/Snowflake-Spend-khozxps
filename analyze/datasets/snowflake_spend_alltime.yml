@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: analyze/channels/snowflake
+source: snowflake
 title: Snowflake spend (All time)
 questions: What is the total Snowflake spend by month?
 description: |-
