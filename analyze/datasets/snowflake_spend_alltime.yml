@@ -5,7 +5,7 @@ questions: What is the total Snowflake spend by month?
 description: |-
   Snowflake spend for all warehouses.
   
-  #snowflake #spend
+  #snowflake #snowflake-spend
 metadata: |-
   {
     "name": "snowflake_spend",
@@ -24,12 +24,8 @@ visualisation: |-
     {"chartType": "line", 
       "options": {
         "scales": {
-          "x": {
-            "stacked": true        
-          },
           "y": {
-            "beginAtZero": true,
-            "stacked": true
+            "beginAtZero": true
           }
         }
       }
