@@ -30,12 +30,18 @@ metadata: |-
   }
 visualisation: |-
   {"chartjs-chart": 
-    {"chartType": "line", 
+    {"chartType": "bar", 
       "options": {
         "scales": {
+          "x": {
+            "stacked": true
+          },
           "y": {
             "stacked": true,
-            "beginAtZero": true
+            "title": {
+                  "display": true,
+                  "text": "Service"
+            }
           }
         }
       }
@@ -43,18 +49,18 @@ visualisation: |-
   }
 query: |-
   select
-      date_trunc(month, date)::date as "daily_spend.usage_month",
-      sum(CASE WHEN service = 'Search Optimization' THEN spend ELSE 0 END) AS "daily_spend.SearchOptimization",
-      sum(CASE WHEN service = 'Query Optimization' THEN spend ELSE 0 END) AS "daily_spend.QueryOptimization",
-      sum(CASE WHEN service = 'Materialized Views' THEN spend ELSE 0 END) AS "daily_spend.MaterializedViews",
-      sum(CASE WHEN service = 'Compute' THEN spend ELSE 0 END) AS "daily_spend.Compute",
-      sum(CASE WHEN service = 'Cloud Services' THEN spend ELSE 0 END) AS "daily_spend.CloudServices",
-      sum(CASE WHEN service = 'Automatic Clustering' THEN spend ELSE 0 END) AS "daily_spend.AutomaticClustering",
-      sum(CASE WHEN service = 'Storage' THEN spend ELSE 0 END) AS "daily_spend.Storage",
-      sum(CASE WHEN service = 'Snowpipe' THEN spend ELSE 0 END) AS "daily_spend.Snowpipe",
-      sum(CASE WHEN service = 'Adj For Incl Cloud Services' THEN spend ELSE 0 END) AS "daily_spend.AdjForInclCloudServices",
-      sum(CASE WHEN service = 'Replication' THEN spend ELSE 0 END) AS "daily_spend.Replication",
-      sum(CASE WHEN service != 'Search Optimization' 
+      CONCAT(date_part(year, date), ' ', lpad(date_part(month, date), 2, '0')) as "daily_spend.month",
+      round(sum(CASE WHEN service = 'Search Optimization' THEN spend ELSE 0 END), 2) AS "daily_spend.SearchOptimization",
+      round(sum(CASE WHEN service = 'Query Optimization' THEN spend ELSE 0 END), 2) AS "daily_spend.QueryOptimization",
+      round(sum(CASE WHEN service = 'Materialized Views' THEN spend ELSE 0 END), 2) AS "daily_spend.MaterializedViews",
+      round(sum(CASE WHEN service = 'Compute' THEN spend ELSE 0 END), 2) AS "daily_spend.Compute",
+      round(sum(CASE WHEN service = 'Cloud Services' THEN spend ELSE 0 END), 2) AS "daily_spend.CloudServices",
+      round(sum(CASE WHEN service = 'Automatic Clustering' THEN spend ELSE 0 END), 2) AS "daily_spend.AutomaticClustering",
+      round(sum(CASE WHEN service = 'Storage' THEN spend ELSE 0 END), 2) AS "daily_spend.Storage",
+      round(sum(CASE WHEN service = 'Snowpipe' THEN spend ELSE 0 END), 2) AS "daily_spend.Snowpipe",
+      round(sum(CASE WHEN service = 'Adj For Incl Cloud Services' THEN spend ELSE 0 END), 2) AS "daily_spend.AdjForInclCloudServices",
+      round(sum(CASE WHEN service = 'Replication' THEN spend ELSE 0 END), 2) AS "daily_spend.Replication",
+      round(sum(CASE WHEN service != 'Search Optimization' 
           AND service != 'Query Acceleration'
           AND service != 'Materialized Views'
           AND service != 'Compute'
@@ -63,7 +69,7 @@ query: |-
           AND service != 'Snowpipe'
           AND service != 'Adj For Incl Cloud Services'
           AND service != 'Replication'
-          THEN spend ELSE 0 END) AS "daily_spend.Other"
+          THEN spend ELSE 0 END), 2) AS "daily_spend.Other"
   from daily_spend
   group by 1
   ORDER BY 1
