@@ -4,6 +4,10 @@ title: Monthly Snowflake invoice (All time)
 questions: What is the total amount invoice by Snowflake each month?
 description: |-
   Monthly Snowflake invoice split by service.
+
+  ## Reproducing the Monthly Snowflake Invoice
+  The `daily_spend` model reproduces the monthly Snowflake invoice precisely, broken down by the same service categories. 
+  The daily_spend model contains additional columns for `warehouse_name`, `database_name` and `storage_type` to further break down spend.
   
   #snowflake #dbt-snowflake-monitoring
 metadata: |-
@@ -24,7 +28,8 @@ metadata: |-
         {"name": "Storage", "label": "Storage", "description": "Storage"}, 
         {"name": "Snowpipe", "label": "Snowpipe", "description": "Snowpipe"}, 
         {"name": "AdjForInclCloudServices", "label": "Adj For Incl Cloud Services", "description": "Adj For Incl Cloud Services"}, 
-        {"name": "Replication", "label": "Replication", "description": "Replication"}
+        {"name": "Replication", "label": "Replication", "description": "Replication"},
+        {"name": "Other", "label": "Other", "description": "Other"}
       ]
     }
   }

@@ -12,6 +12,7 @@ metadata: |-
     "label": "Snowflake Spend", 
     "related_table": {
       "columns": [
+        {"name": "year", "label": "Year", "description": "Year"},
         {"name": "month", "label": "Month", "description": "Month"}
       ],
       "aggregates": [
@@ -43,8 +44,9 @@ visualisation: |-
   }
 query: |-
   SELECT
-    CONCAT(date_part(year, date), ' ', lpad(date_part(month, date), 2, '0')) as "snowflake_spend.month",
+    date_part(year, date) as "snowflake_spend.year",
+    lpad(date_part(month, date), 2, '0') as "snowflake_spend.month",
     sum(round(spend, 2)) AS "snowflake_spend.spend"
   FROM daily_spend
-  GROUP BY 1
-  ORDER BY 1
+  GROUP BY 1, 2
+  ORDER BY 1, 2
