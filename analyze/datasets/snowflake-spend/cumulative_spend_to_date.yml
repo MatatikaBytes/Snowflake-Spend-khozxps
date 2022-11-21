@@ -1,6 +1,6 @@
 version: datasets/v0.2
 source: snowflake
-title: Cumulative Spend to Date
+title: Cumulative Spend YTD
 questions: What is the total by day of month?
 description: |-
   Cumulative spend to date for all warehouses.
@@ -80,7 +80,7 @@ query: |-
     sum(CASE WHEN spend_month = '4' THEN cumulative ELSE NULL END) AS "snowflake_spend.april",
     sum(CASE WHEN spend_month = '5' THEN cumulative ELSE NULL END) AS "snowflake_spend.may",
     sum(CASE WHEN spend_month = '6' THEN cumulative ELSE NULL END) AS "snowflake_spend.june",
-    sum(CASE WHEN spend_month = '7' THEN cumulative ELSE NULL END) AS "snowflake_spend.jule",
+    sum(CASE WHEN spend_month = '7' THEN cumulative ELSE NULL END) AS "snowflake_spend.july",
     sum(CASE WHEN spend_month = '8' THEN cumulative ELSE NULL END) AS "snowflake_spend.august",
     sum(CASE WHEN spend_month = '9' THEN cumulative ELSE NULL END) AS "snowflake_spend.september",
     sum(CASE WHEN spend_month = '10' THEN cumulative ELSE NULL END) AS "snowflake_spend.october",
