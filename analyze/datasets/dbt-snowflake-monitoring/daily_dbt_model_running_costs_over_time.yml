@@ -1,9 +1,9 @@
 version: datasets/v0.2
 source: snowflake
-title: Snowflake spend (All time)
-questions: What is the total Snowflake spend by month?
+title: Daily dbt running costs (All time)
+questions: What is the running costs for dbt each day?
 description: |-
-  Snowflake spend for all warehouses.
+  Daily dbt running costs.
   
   #snowflake #dbt-snowflake-monitoring
 metadata: |-
