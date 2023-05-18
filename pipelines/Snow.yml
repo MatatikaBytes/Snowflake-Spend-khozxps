@@ -3,7 +3,7 @@ name: Snow
 timeout: 0
 data_components:
 - dbt
-- Snowflake
+- target-snowflake
 actions:
 - dbt:deps
 - dbt:seed
