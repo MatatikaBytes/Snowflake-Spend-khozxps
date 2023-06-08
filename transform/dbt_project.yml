@@ -36,5 +36,6 @@ models:
   # ------------------
   dbt_snowflake_monitoring:
     enabled: true
-  
 
+
+  dbt-snowflake-monitoring: {}
